@@ -1,4 +1,4 @@
-(defproject lein-webdav "0.1.0"
+(defproject lein-webdav "0.1.1-SNAPSHOT"
   :description "A simple plugin that enables deploying to webdav repos."
   :url "https://github.com/tobias/lein-webdav"
   :license {:name "Eclipse Public License"
