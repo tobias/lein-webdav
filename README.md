@@ -8,17 +8,15 @@ You can currently deploy to a webdav repo by adding:
 
     [org.apache.maven.wagon/wagon-webdav-jackrabbit "2.4"]
 
-to your project's `:plugins`, then creating a `leiningen/wagons.clj`
-somewhere, containing:
+to your project's `:plugins`, then placing the following at the bottom
+of `project.clj`:
 
-    {"dav" #(org.apache.maven.wagon.providers.webdav.WebDavWagon.)}
-
-then creating a `.lein-classpath` in your project root containing the
-path to the dir containing `leiningen/wagons.clj`.
-
+    (cemerick.pomegranate.aether/register-wagon-factory! "dav"
+      #(eval '(org.apache.maven.wagon.providers.webdav.WebDavWagon.)))
+  
 That's a bit of a pain, so this plugin brings in
-`wagon-webdav-jackrabbit`, and puts the proper `leiningen/wagons.clj`
-on the lein classpath. And that's all it does.
+`wagon-webdav-jackrabbit`, and registers the correct wagon factory for
+you. And that's all it does.
 
 ## Usage
 
